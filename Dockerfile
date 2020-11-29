@@ -11,7 +11,7 @@ ARG GROUP_NAME=user
 # Add new user
 RUN groupadd -g ${GROUP_ID} ${GROUP_NAME} &&\
     useradd -l -u ${USER_ID} -g ${GROUP_NAME} ${USER_NAME} &&\
-    install -d -m 0755 -o ${USER_NAME} -g ${GROUP_NAME} /home/user
+    install -d -m 0755 -o ${USER_NAME} -g ${GROUP_NAME} /home/${USER_NAME}
 
 # Ensure apt is in non-interactive to avoid prompts
 ENV DEBIAN_FRONTEND=noninteractive
