@@ -25,3 +25,4 @@ RUN echo ${USER_NAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers
 
 # Change user
 USER ${USER_NAME} 
+WORKDIR /home/${USER_NAME}
