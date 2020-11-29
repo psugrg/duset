@@ -24,5 +24,5 @@ docker image build \
 
 Run container:
 ```
-docker run -it --rm setusr /bin/bash
+docker run -it --rm duset /bin/bash
 ```
