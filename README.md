@@ -1,7 +1,8 @@
 # Run Docker Container as Current Host User
 
-Creates derived container that runs with local rights. It's a part of the DDEN
-infrastructure and is a last step of creating the development environment.
+Creates derived container that runs with local rights. It's a part of the
+[DDEN](https://github.com/psugrg/dden) infrastructure and is a last step of
+creating the development environment.
 
 It'll build a dedicated image that derives from a base development environment
 image and add a user that has the same user ID and group ID as the local user
