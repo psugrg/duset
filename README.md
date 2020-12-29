@@ -22,7 +22,42 @@ articles:
 
 ## Usage
 
-### Build image
+### Install using curl
+
+Use the following bash command to automatically install desired DDEN type
+image.
+
+```bash
+curl -Lks https://raw.githubusercontent.com/psugrg/duset/main/duset.sh \
+| /bin/bash -s <image-name>
+```
+
+Where:
+
+- `<image-name>` - the name of the DDEN type of image to be installed.
+
+The installed image will have the following name: `<image-name>-local` and
+will be installed in `./local/bin` folder.
+
+### Create an instance of the environment
+
+Run the following command to create an instance of the environment.
+The instance (container) will be created for the current folder. This means
+that the current folder will be bind with the container that will be created.
+
+```bash
+~/.local/bin/<image-name>-local-create.sh <instance-name>
+```
+
+Where:
+
+- `<instance-name>` - the name of the development environment instance (container).
+
+### Alternative installation
+
+Alternatively the image can be build and installed manually.
+
+#### Build image
 
 Use the following bash command to build a local image.
 
@@ -42,31 +77,17 @@ Where:
 - `<image-name>` - the name of the base image you want to derive from.
 - `<user-image-name>` - the name of the new image that will be created.
 
-### Install the environment
+#### Install the environment
 
-Tun the following bash command to install the dden-type environment to the
+Run the following bash command to install DDEN type environment to the
 `~/.local/user/bin` location.
 
 ```bash
 docker run --rm -v "$HOME/.local/bin:/home/user/.local/bin" \ 
--u "$(id -u):$(id -g)" \
+-e IMAGE_NAME=<user-image-name> \
 <user-image-name> \
 install.sh
 ```
-
-### Create an instance of the environment
-
-Run the following command to create an instance of the environment.
-The instance (container) will be created for the current folder. This means
-that the current folder will be bind with the container that will be created.
-
-```bash
-~/.local/bin/arm-m-dev-local-create.sh <instance-name>
-```
-
-Where:
-
-- `<instance-name` - the name of the development environment instance (container).
 
 ## Standalone usage
 
