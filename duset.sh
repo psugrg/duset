@@ -14,7 +14,7 @@ docker image build --build-arg IMAGE="$@" \
 && docker run -e IMAGE_NAME="$@-local" --rm -v "$HOME/.local/bin:/home/user/.local/bin" \
 "$@-local" install.sh \
 && docker rmi "$@" \
-&& echo "$@" installed as "$@-local" in ~/.local/bin 
+&& echo "$@ installed as $@-local in ~/.local/bin" \
 || (echo "Installation failed!" && docker rmi "$@-local")
 
 popd
