@@ -7,7 +7,8 @@ pushd /tmp/duset
 
 # Compile the image and run the installation script
 # Note that the base image will be removed from the system after installation
-docker image build --build-arg IMAGE="$@" \
+mkdir -p "$HOME/.local/bin"
+&& docker image build --build-arg IMAGE="$@" \
   --build-arg USER_ID=$(id -u ${USER}) \
   --build-arg GROUP_ID=$(id -g ${USER}) --build-arg USER_NAME=${USER} \
   --build-arg GROUP_NAME=${USER} -t $@-local . \
