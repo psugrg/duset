@@ -12,8 +12,9 @@ docker image build --build-arg IMAGE="$@" \
   --build-arg GROUP_ID=$(id -g ${USER}) --build-arg USER_NAME=${USER} \
   --build-arg GROUP_NAME=${USER} -t $@-local . \
 && docker run -e IMAGE_NAME="$@-local" --rm -v "$HOME/.local/bin:/home/user/.local/bin" \
-"$@"-local install.sh \
-&& docker rmi $@
+"$@-local" install.sh \
+&& docker rmi "$@"
+&& echo "$@" installed as "$@-local" in ~/.local/bin 
+|| (echo "Installation failed!" && docker rmi "$@-local")
 
 popd
-echo "$@" installed as "$@-local" in ~/.local/bin 
